@@ -1,0 +1,48 @@
+﻿@model List<Company>
+
+<h1>All my cars</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+
+            <th scope="col">Company Name</th>
+            <th scope="col">Cars</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var company in Model)
+        {
+            <tr>
+                <th scope="row">@company.Id</th>
+                <td>@company.CompanyName</td>
+                <td>@string.Join(",", company.Cars.Select(n => n.ModelName))</td>
+                <td>
+                    <a asp-controller="Company"
+                       asp-action="Modify"
+                       asp-route-id="@company.Id"
+                       class="btn btn-primary">
+                        Modify
+                    </a>
+                    <a asp-controller="Company"
+                       asp-action="Details"
+                       asp-route-id="@company.Id"
+                        class="btn btn-primary">
+                        Show details
+                    </a>
+                    <a asp-controller="Company"
+                       asp-action="Delete"
+                       asp-route-id="@company.Id"
+                       class=" btn btn-danger">
+                        Delete
+                    </a>
+                </td>
+               
+               
+               
+            </tr>
+        }
+    </tbody>
+</table>

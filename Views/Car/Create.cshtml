@@ -1,0 +1,66 @@
+﻿@model PostCarVM
+
+@{
+    ViewData["Title"] = "Add a new car";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Add a New Car</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="CreateConfirm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <input type="hidden" asp-for="@Model.Car.Id" class="form-control" />
+
+                    <div class="form-group">
+                        <label asp-for="@Model.Car.ModelName" class="control-label"></label>
+                        <input asp-for="@Model.Car.ModelName" class="form-control" />
+                        <span asp-validation-for="@Model.Car.ModelName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Car.Company" class="control-label"></label>
+                        @* <input asp-for="Company" class="form-control" /> *@
+
+                        <select class="form-select" asp-for="@Model.Car.Company" aria-label="Default select example">
+                            <option selected>Select company</option>
+                            @foreach(var company in Model.Companies)
+                            {
+                                <option value="@company.Id">@company.CompanyName</option>
+                            }
+                        </select>
+
+                        <span asp-validation-for="@Model.Car.Company" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Car.URLimg" class="control-label"></label>
+                        <input asp-for="@Model.Car.URLimg" class="form-control" />
+                        <span asp-validation-for="@Model.Car.URLimg" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Car.YearOfManufacture" class="control-label"></label>
+                        <input asp-for="@Model.Car.YearOfManufacture" class="form-control" />
+                        <span asp-validation-for="@Model.Car.YearOfManufacture" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Car.MotorPower" class="control-label"></label>
+                        <input asp-for="@Model.Car.MotorPower" class="form-control" />
+                        <span asp-validation-for="@Model.Car.MotorPower" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Car.MaximumSpeed" class="control-label"></label>
+                        <input asp-for="@Model.Car.MaximumSpeed" class="form-control" />
+                        <span asp-validation-for="@Model.Car.MaximumSpeed" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Add" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

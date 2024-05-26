@@ -1,0 +1,24 @@
+﻿@model Car
+
+<h1>Details</h1>
+
+<div class="card">
+    <div class="card-header">
+        @Model.ModelName
+    </div
+
+    <div class="card-body">
+        <h5 class="card-title"> @Model.ModelName</h5>
+        @* <p class="card-text">@Model.Author</p> *@
+        <hr />
+        <p class="card-text"><b>Year of manufacture:</b> @Model.YearOfManufacture</p>
+        <p class="card-text"><b>Motor power:</b> @Model.MotorPower</p>
+        <p class="card-text"><b>Maximum speed:</b> @Model.MaximumSpeed</p>
+    </div>
+    <div class="form-group text-center">
+                              <img src="@Url.Content(Model.URLimg)" width="50"/>
+    </div>
+    <div>
+         <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+    </div>
+</div>

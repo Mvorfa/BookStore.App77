@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Car>
+@{
+    ViewData["Title"] = "List of Cars";
+}
+<div class="container">
+    <div class="row">
+        @foreach (var car in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@Url.Content(car.URLimg)" class="card-img-top" alt="Car Cover">
+                    <div class="card-body">
+                        <h5 class="card-title">@car.ModelName</h5>
+                        <p class="card-text">@car.CompanyName</p>
+                        <a href="@Url.Action("Details", "Cars", new { id = car.Id })" class="btn btn-primary">Show Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
